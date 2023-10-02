@@ -1,0 +1,57 @@
+<head>
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+</head>
+<div *ngFor="let post of posts" class="content">
+  <div class="post">
+    <div class="sender-img">
+      <img [src]="post.sender_img" alt="" />
+    </div>
+    <div class="post-info">
+      <h4>{{ post.sender_name }}</h4>
+      <p class="discription">{{ post.sender_discription }}</p>
+      <img [src]="post.sender_post_img" class="post-img" alt="" />
+      <div class="reacts">
+        <button (click)="change_icon(); post.add_like()" class="react like">
+          <i [class]="post.class"></i>
+          <span class="num">{{ post.num_likes }}</span>
+        </button>
+        <button class="react comment">
+          <i class="bx bx-comment" style="color: #ffffff"></i>
+          <span class="num">{{ post.num_comment }}</span>
+        </button>
+        <button class="react share">
+          <i class="bx bx-share" style="color: #ffffff"></i>
+          <span class="num">{{ post.num_share }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="true">
+    <div *ngFor="let comment of post.comments" class="post_comment">
+      <div class="user-img">
+        <img [src]="comment.user.user_photo" alt="" />
+      </div>
+      <div class="comment-info">
+        <h4>{{ comment.user.user_name }}</h4>
+        <p class="discription">{{ comment.user_comment }}</p>
+        <div class="comment-reacts">
+          <button (click)="show_comment()" class="comment-react like">
+            <i class="bx bx-heart" style="color: #ffffff"></i>
+            <span class="num"></span>
+          </button>
+          <button class="comment-react comment">
+            <i class="bx bx-comment" style="color: #ffffff"></i>
+            <span class="num"></span>
+          </button>
+          <button class="comment-react share">
+            <i class="bx bx-share" style="color: #ffffff"></i>
+            <span class="num"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
